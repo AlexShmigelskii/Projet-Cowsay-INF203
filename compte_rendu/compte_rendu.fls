@@ -1,8 +1,8 @@
-PWD /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu
+PWD /Users/aleksandr/Documents/UGA etudes/S2/INF203/Projet-Cowsay-INF203/compte_rendu
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/web2c/texmf.cnf
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.tex
-OUTPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.log
+INPUT /Users/aleksandr/Documents/UGA etudes/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.tex
+OUTPUT compte_rendu.log
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/article.cls
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/article.cls
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/size11.clo
@@ -124,22 +124,22 @@ INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/listing
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.aux
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.aux
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.aux
-OUTPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.aux
+INPUT ./compte_rendu.aux
+INPUT ./compte_rendu.aux
+INPUT compte_rendu.aux
+OUTPUT compte_rendu.aux
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/graphics/color.sty
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-OUTPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.pdf
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-OUTPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
+INPUT ./compte_rendu.out
+INPUT ./compte_rendu.out
+INPUT compte_rendu.out
+INPUT compte_rendu.out
+OUTPUT compte_rendu.pdf
+INPUT ./compte_rendu.out
+INPUT ./compte_rendu.out
+OUTPUT compte_rendu.out
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm2074.tfm
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmss.fd
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmss.fd
@@ -150,18 +150,35 @@ INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappe
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.toc
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.toc
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.toc
-OUTPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.toc
+INPUT ./compte_rendu.toc
+INPUT ./compte_rendu.toc
+INPUT compte_rendu.toc
+OUTPUT compte_rendu.toc
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.aux
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
-INPUT /Users/aleksandr/Documents/UGA études/S2/INF203/Projet-Cowsay-INF203/compte_rendu/compte_rendu.out
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ectt1095.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/ecti1095.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/jknappen/ec/eccc1095.tfm
+INPUT compte_rendu.aux
+INPUT ./compte_rendu.out
+INPUT ./compte_rendu.out
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb

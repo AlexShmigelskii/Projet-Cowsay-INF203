@@ -77,4 +77,44 @@ Aleksandr Shmigelskii, Gabriel Mella, Daniel Bass \\ IMA-05
 \newpage
 \section{Introduction}
 
+\newpage
+\section{Préliminaires}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|p{5cm}|p{8.5cm}|}
+	\hline
+	\textbf{Option} & \textbf{Signification / Effet} & \textbf{Exemple d’usage} \\
+	\hline
+	\texttt{-b} & Borg mode : la vache aura un aspect “cyborg”. & \verb|cowsay -b "Je suis un Borg"| \\ 
+	\hline
+	\texttt{-d} & Dead mode : la vache a des yeux « XX ». & \verb|cowsay -d "Aïe... Je ne me sens pas bien"| \\
+	\hline
+	\texttt{-g} & Greedy mode : la vache a des yeux « \$\$ ». & \verb|cowsay -g "J'adore l'argent"| \\
+	\hline
+	\texttt{-p} & Paranoïd mode : la vache a des yeux « @@ ». & \verb|cowsay -p "Je suis surveillé..."| \\
+	\hline
+	\texttt{-s} & Stoned mode : la vache a des yeux « ** ». & \verb|cowsay -s "Coucou..."| \\
+	\hline
+	\texttt{-t} & Tired mode : la vache a des yeux « -- ». & \verb|cowsay -t "Je suis épuisée..."| \\
+	\hline
+	\texttt{-w} & Wired mode : la vache a des yeux « OO ». & \verb|cowsay -w "Je ne tiens plus en place"| \\
+	\hline
+	\texttt{-y} & Youthful mode : la vache a des yeux « .. ». & \verb|cowsay -y "Je suis toute jeune"| \\
+	\hline
+	\texttt{-e} \emph{eyes} & Personnalise les yeux (2 caractères). & \verb|cowsay -e ^o "Regarde mes yeux"| \\
+	\hline
+	\texttt{-T} \emph{tongue} & Personnalise la langue (1 ou 2 caractères). & \verb|cowsay -T "U" "Ma langue est sortie"| \\
+	\hline
+	\texttt{-f} \emph{cowfile} & Utilise un autre dessin ASCII (fichier .cow). & \verb|cowsay -f small "Vraiment petite!"| \\
+	\hline
+	\texttt{-r} & Choisit une vache au hasard (fichier .cow). & \verb|cowsay -r "Je suis une vache aléatoire."| \\
+	\hline
+	\texttt{-l} & Liste les vaches définies dans le chemin \textbf{COWPATH} & \verb|cowsay -l| \\
+	\hline
+	\end{tabular}
+	\caption{Principales options de \texttt{cowsay}}
+	\label{tab:cowsay-options}
+	\end{table}
+
 \end{document}
