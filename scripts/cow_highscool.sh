@@ -33,10 +33,10 @@ N=$1
 while [ $CMPT -le $N ]
 do
   # La vache prononce le chiffre 
-  cowsay $CMPT
+  cowsay $(($CMPT * $CMPT))
 
   # Incrémentation du compteur
-  CMPT=$((CMPT + 1))
+  CMPT=$(($CMPT + 1))
 
   # On patiente 1 seconde
   sleep 1
