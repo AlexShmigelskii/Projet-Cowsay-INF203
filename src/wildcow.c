@@ -14,8 +14,7 @@ void gotoxy(int x, int y) {
 
 // Affiche la vache regardant vers la gauche, avec les yeux passés en paramètre
 void affiche_vache(const char *eyes) {
-    printf("\n"); // sans cette ligne, la tête de la vache « disparaîtrait »    
-    printf("            ^__^\n");
+    printf("   ^__^\n");
     printf("            (%s)\\_______\n", eyes);
     printf("            (__)\\       )\\/\\\n");
     printf("               ||----w |\n");
@@ -24,7 +23,6 @@ void affiche_vache(const char *eyes) {
 
 // Vache miroir avec animation des jambes selon leg_frame (0 ou 1)
 void affiche_vache_mirror(const char *eyes, int row, int col, int leg_frame) {
-    printf("\n");
     gotoxy(row+0, col);  printf("            ^__^    ");
     gotoxy(row+1, col);  printf("     ______/(%s)   ", eyes);
     gotoxy(row+2, col);  printf(" \\/\\(      /(__)    ");
@@ -77,7 +75,7 @@ int main(void) {
     int leg_frame   = 0;
     int frame_count = 0;
     int last_col = 5;
-    for (int c = 5; c <= 30; c += 1) {
+    for (int c = 5; c <= 35; c += 1) {
         last_col = c;    // on mémorise à chaque itération
         frame_count++;
 
@@ -93,12 +91,20 @@ int main(void) {
         usleep(100000);
 
         // Alterner la position des jambes
-        leg_frame = 1 - leg_frame;
+        leg_frame = 1 - leg_frame; // 0 ou 1
     }
+
+    update();
+    gotoxy(5, last_col);
+    affiche_vache_mirror("oo", 5, last_col, 0);
+    sleep(1);
 
     // 3) Grazing en miroir, à la position atteinte
     const char *tails[] = {"\\/\\", "/\\_", "\\__", "__\\", "_\\/",
                            "\\/\\", "/\\_", "\\__", "__\\", "_\\/"};
+
+    // Divisons la taille totale par la taille d'un élément - 
+    // cela donne le nombre d'éléments :
     int nframes = sizeof(tails)/sizeof(*tails);
     for (int f = 0; f < nframes; f++) {
         update();
@@ -112,14 +118,14 @@ int main(void) {
         // Clignement : yeux ouverts
         update();
         gotoxy(5, last_col);
-        affiche_vache_mirror("oo", 5, last_col, leg_frame);
+        affiche_vache_mirror("oo", 5, last_col, 0);
         fflush(stdout);
         usleep(400000);
 
         // Clignement : yeux fermés
         update();
         gotoxy(5, last_col);
-        affiche_vache_mirror("--", 5, last_col, leg_frame);
+        affiche_vache_mirror("--", 5, last_col, 0);
         fflush(stdout);
         usleep(200000);
     }
@@ -127,7 +133,7 @@ int main(void) {
     // 5) Dernier état : yeux ouverts
     update();
     gotoxy(5, last_col);
-    affiche_vache_mirror("oo", 5, last_col, leg_frame);
+    affiche_vache_mirror("oo", 5, last_col, 0);
     printf("\n");
 
     return 0;
