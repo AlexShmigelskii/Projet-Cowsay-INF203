@@ -63,17 +63,27 @@ int int_max(int a,int b){
      return b;
 }
 
+int int_min(int a,int b){
+     if (a>b) return b;
+     return a;
+}
+
+
 void fitness_update(int *fitness, int lunchfood){
     //actualise la variable fitness en fonction de l'entree du joueur
-    *fitness = int_max(*fitness + lunchfood - generer_entier(4),0);
+    //verifie que fitness reste dans son domaine de definition {0,...,10}
+    *fitness = int_min(int_max(*fitness + lunchfood - generer_entier(4),0),10);
 }
 
 void stock_update(int *stock, int lunchfood){
     //actualise la variable stock en fonction de l'entree du joueur
-    *stock = int_max(*stock - lunchfood + generer_entier(8) - 4,0);
+    //verifie que fitness reste dans son domaine de definition {0,...,10}
+    *stock = int_min(int_max(*stock - lunchfood + generer_entier(8) - 4,0),10);
 }
 
 int lire_lunchfood(int stock) {
+    //lit en entree standard la valeur rentree par le joueur
+    //si l'entree est invalide, la sortie sera la valeur vallable la plus proche possible (soit 0 soit stock)
     char c ;
     scanf("\n%c", &c) ;
     if ((c < '0') || (c > stock + '0')) {
