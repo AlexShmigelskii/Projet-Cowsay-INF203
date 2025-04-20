@@ -2,26 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Fonction d'affichage de la vache
-// Paramètres :
-//   eyes        : chaîne de 2 caractères pour les yeux
-//   tongue      : chaîne de un ou deux caractères pour la langue (peut être vide)
-//   tail_length : entier indiquant le nombre de caractères supplémentaires pour la queue
-//   legs_length : entier indiquant le nombre de lignes supplémentaires pour allonger les jambes
 void affiche_vache(char *eyes, char *tongue, int tail_length, int legs_length) {
-    int base_tail = 7; // nombre de '_' de base pour la queue
 
+    // Fonction d'affichage de la vache
+    // Paramètres :
+    //   eyes        : chaîne de 2 caractères pour les yeux
+    //   tongue      : chaîne de un ou deux caractères pour la langue (peut être vide)
+    //   tail_length : entier indiquant le nombre de caractères supplémentaires pour la queue
+    //   legs_length : entier indiquant le nombre de lignes supplémentaires pour allonger les jambes
+
+    // 1) Tête et yeux
     printf("      \\    ^__^\n");
-    // Ligne avec les yeux et la queue : on affiche le dessin de la tête suivi d'un nombre variable d'underscores.
-    printf("       \\   (%s)\\", eyes);
-    for (int i = 0; i < base_tail + tail_length; i++) {
-        printf("_");
+    printf("       \\   (%s)\\_______\n", eyes);
+
+    // 2) Queue : on imprime toujours la même indentation, puis ')'
+    printf("           (__)\\       )");
+    //    et on répète "\/" tail_length fois
+    for (int i = 0; i < tail_length; i++) {
+        printf("\\/");
     }
+    // puis on termine la ligne
     printf("\n");
 
-    printf("           (__)\\       )\\/\\\n");
-    
-    // Affichage de la langue selon sa longueur
+    // 3) Ligne de la langue
     switch (strlen(tongue)) {
         case 1:
             printf("            %s  ||----w |\n", tongue);
@@ -33,8 +36,9 @@ void affiche_vache(char *eyes, char *tongue, int tail_length, int legs_length) {
             printf("               ||----w |\n");
             break;
     }
+
+    // 4) Jambes
     printf("               ||     ||\n");
-    // Affichage des jambes : ligne de base, puis des lignes supplémentaires si legs_length > 0
     for (int i = 0; i < legs_length; i++) {
         printf("               ||     ||\n");
     }
@@ -55,7 +59,7 @@ int main(int argc, char *argv[]) {
                     strcpy(eyes, argv[i + 1]);
                     i++; // sauter l'argument traité
                 } else {
-                    fprintf(stderr, "Erreur : l'argument pour -e doit être une chaîne de deux caractères.\n");
+                    fprintf(stderr, "Erreur : l'argument pour -e (eyes) doit être une chaîne de deux caractères.\n");
                     return 1;
                 }
             } else {
@@ -79,7 +83,7 @@ int main(int argc, char *argv[]) {
         }
         else if (strcmp(argv[i], "--tail") == 0) {
             if (i + 1 < argc) {
-                tail_length = atoi(argv[i + 1]);
+                tail_length = atoi(argv[i + 1]); // ASCII to Int
                 i++;
             } else {
                 fprintf(stderr, "Erreur : --tail requiert un argument numérique.\n");

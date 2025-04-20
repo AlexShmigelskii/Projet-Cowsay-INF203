@@ -2,3 +2,31 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {section}{\numberline {2}Préliminaires}{3}{section.2}%
 \contentsline {section}{\numberline {3}Bash}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}cow\_kindergarten}{4}{subsection.3.1}%
+\contentsline {paragraph}{Fonctionnalité}{4}{paragraph*.1}%
+\contentsline {paragraph}{Exemple d’exécution}{4}{paragraph*.2}%
+\contentsline {paragraph}{Commentaires}{4}{paragraph*.3}%
+\contentsline {subsection}{\numberline {3.2}cow\_primaryschool}{5}{subsection.3.2}%
+\contentsline {paragraph}{Différences principales par rapport à \texttt {cow\_kindergarten}}{5}{paragraph*.4}%
+\contentsline {paragraph}{Exemples d’exécution}{5}{paragraph*.5}%
+\contentsline {paragraph}{Commentaires}{5}{paragraph*.6}%
+\contentsline {subsection}{\numberline {3.3}cow\_highschool}{6}{subsection.3.3}%
+\contentsline {paragraph}{Différences principales par rapport à \texttt {cow\_primaryschool}}{6}{paragraph*.7}%
+\contentsline {paragraph}{Exemples d’exécution}{6}{paragraph*.8}%
+\contentsline {paragraph}{Commentaires}{6}{paragraph*.9}%
+\contentsline {subsection}{\numberline {3.4}cow\_college}{7}{subsection.3.4}%
+\contentsline {paragraph}{Fonctionnalité}{7}{paragraph*.10}%
+\contentsline {paragraph}{Exemples d’exécution}{7}{paragraph*.11}%
+\contentsline {paragraph}{Commentaires}{7}{paragraph*.12}%
+\contentsline {subsection}{\numberline {3.5}cow\_university}{8}{subsection.3.5}%
+\contentsline {paragraph}{Fonctionnalité}{8}{paragraph*.13}%
+\contentsline {paragraph}{Exemples d’exécution}{8}{paragraph*.14}%
+\contentsline {paragraph}{Commentaires}{8}{paragraph*.15}%
+\contentsline {subsection}{\numberline {3.6}smart\_cow}{9}{subsection.3.6}%
+\contentsline {paragraph}{Fonctionnalité}{9}{paragraph*.16}%
+\contentsline {paragraph}{Exemples d’exécution}{9}{paragraph*.17}%
+\contentsline {paragraph}{Commentaires et difficultés}{9}{paragraph*.18}%
+\contentsline {subsection}{\numberline {3.7}crazy\_cow}{10}{subsection.3.7}%
+\contentsline {paragraph}{Fonctionnalité}{10}{paragraph*.19}%
+\contentsline {paragraph}{Exemple d’exécution}{10}{paragraph*.20}%
+\contentsline {paragraph}{Commentaires et difficultés}{10}{paragraph*.21}%
