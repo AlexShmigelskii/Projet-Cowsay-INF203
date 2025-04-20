@@ -45,7 +45,7 @@ do
             isPrime=0   # Trouvé un diviseur => pas premier
             break       # Pas besoin de continuer
         fi
-        i=$((i + 1))
+        i=$(($i + 1))
     done
 
     # Si isPrime vaut 1 => c'est un nombre premier

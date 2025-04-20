@@ -121,4 +121,404 @@ Aleksandr Shmigelskii, Gabriel Mella, Daniel Bass \\ IMA-05
 \newpage
 \section{Bash}
 
+\subsection{cow\_kindergarten}
+
+\paragraph{Fonctionnalité}  
+Ce script fait « dire » à la vache les nombres de 1 à 10 de manière animée :
+\begin{itemize}
+  \item \texttt{clear} efface l’écran avant chaque itération pour simuler une animation.
+  \item \texttt{cowsay \$i} affiche le chiffre courant (\texttt{i} parcourant \{1…10\}).
+  \item \texttt{sleep 1} introduit une pause d’une seconde entre chaque affichage.
+  \item À la fin, \texttt{cowsay -T U "J’ai terminé!"} fait tirer la langue à la vache.
+\end{itemize}
+
+\paragraph{Exemple d’exécution}  
+\begin{verbatim}
+$ ./cow_kindergarten.sh
+ ___
+<  >
+ ---
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+...
+ ___
+< 9 >
+ ---
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+ ____________
+<J'ai terminé!>
+ ------------
+     \  ^__^
+      \ (oo)\_______  
+        (__)\\       )\/\
+         U  ||----w |
+            ||     ||
+\end{verbatim}
+
+\paragraph{Commentaires}  
+\begin{itemize}
+	\item Utilisation d’une boucle \texttt{for i in \{1..10\}} appelant \texttt{cowsay} à chaque itération.
+	\item \textbf{Effet d’animation} : \texttt{clear} + \texttt{sleep 1} suffisent, pas besoin d’outils externes.  
+\end{itemize}
+
+\medskip
+\noindent\emph{Le code source est fourni dans l’archive (\texttt{scripts/cow\_kindergarten.sh}).}
+
+\newpage
+
+\subsection{cow\_primaryschool}
+
+\paragraph{Différences principales par rapport à \texttt{cow\_kindergarten}}  
+\begin{itemize}
+  \item Le nombre d’itérations est désormais fixé par l’argument \texttt{\$1}.  
+  \item Vérification qu’un seul argument est fourni et qu’il est strictement positif :
+    \begin{itemize}
+      \item si \texttt{\$\# -ne 1}, on affiche un message d’usage et on quitte ;
+      \item si \texttt{\$1 -le 0}, on affiche via \texttt{cowsay} « Veuillez fournir un nombre entier positif supérieur à 0 » puis on quitte.
+    \end{itemize}
+  \item Boucle \texttt{while [ \$CMPT -le \$N ]} remplace la boucle fixe \texttt{\{1..10\}}.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}  
+\begin{verbatim}
+$ ./cow_primaryschool.sh 5
+ ___
+< 5 >
+ ---
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_primaryschool.sh -5
+ ___________________________________
+/ Veuillez fournir un nombre entier \
+\ positif supérieur à 0.            /
+ -----------------------------------
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_primaryschool.sh 5 7
+Usage: ./cow_primaryschool.sh <nombre n>
+\end{verbatim}
+
+\paragraph{Commentaires}  
+\begin{itemize}
+  \item Le test \texttt{[ \$1 -le 0 ]} intercepte les valeurs non-positives et utilise \texttt{cowsay} pour un message d’erreur plus lisible.  
+  \item En cas d’erreur, le script quitte immédiatement sans exécuter la boucle principale.  
+  \item Le test \texttt{[ \$1 -le 0 ]} couvre les entiers non positifs, mais si \texttt{\$1} n’est pas numérique, Bash renvoie une erreur de syntaxe (operand expected), mais nous avons supposé que seuls des chiffres seraient transmis.
+\end{itemize}
+
+\medskip
+\noindent\emph{Le code complet est disponible dans l’archive (\texttt{scripts/cow\_primaryschool.sh}).}
+
+\newpage
+
+\subsection{cow\_highschool}
+
+\paragraph{Différences principales par rapport à \texttt{cow\_primaryschool}}  
+\begin{itemize}
+  \item Au lieu d’énoncer simplement $i$, la vache énonce son carré $i^2$ grâce à :
+    \begin{verbatim}
+cowsay $((CMPT * CMPT))
+    \end{verbatim}
+  \item La structure générale (vérification d’argument, boucle, \texttt{clear}, \texttt{sleep}) reste identique.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}
+\begin{verbatim}
+$ ./cow_highschool.sh 10
+ ____
+< 36 >
+----
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_highschool.sh -5
+ ___________________________________
+/ Veuillez fournir un nombre entier \
+\ positif supérieur à 0.            /
+ -----------------------------------
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_highschool.sh
+Usage: ./cow_highschool.sh <nombre n>
+\end{verbatim}
+
+\paragraph{Commentaires}  
+\begin{itemize}
+  \item Le calcul du carré utilise l’arithmétique intégrée de Bash (\texttt{\$((…))}).  
+  \item La validation écrite \texttt{[ \$1 -le 0 ]} couvre les valeurs non‑positives, mais un argument non numérique génère une erreur Shell (« operand expected ») non gérée.  
+\end{itemize}
+
+\medskip
+\noindent\emph{Le script complet se trouve dans l’archive (\texttt{scripts/cow\_highschool.sh}).}
+
+\newpage
+
+\newpage
+\subsection{cow\_college}
+
+\paragraph{Fonctionnalité}  
+Ce script énonce les termes de la suite de Fibonacci strictement inférieurs à $n$ :
+\begin{itemize}
+  \item Vérification de l’argument : un entier > 1 est requis (\texttt{[ \$1 -le 1 ]}).  
+  \item Initialisation de deux variables \texttt{FIB1=1}, \texttt{FIB2=1}.  
+  \item Boucle \texttt{while [ \$FIB1 -lt \$N ]} :
+    \begin{itemize}
+      \item Affichage de \texttt{cowsay \$FIB1}.  
+      \item Calcul du terme suivant via \texttt{NEW=\$((FIB1+FIB2))}, décalage \texttt{FIB1=\$FIB2}, \texttt{FIB2=\$NEW}.  
+      \item \texttt{sleep 1} + \texttt{clear} pour l’animation.
+    \end{itemize}
+  \item Fin marquée par \texttt{cowsay -T U "J'ai terminé!"}.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}
+\begin{verbatim}
+$ ./cow_college.sh 10
+ ___
+< 1 >
+ ---
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+ ...
+ ___
+< 8 >
+ ---
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+         U  ||----w |
+            ||     ||
+
+$ ./cow_college.sh 1
+ ___________________________________
+/ Veuillez fournir un nombre entier \
+\ positif supérieur à 1.            /
+ -----------------------------------
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_college.sh
+Usage: ./cow_college.sh <nombre n>
+\end{verbatim}
+
+\paragraph{Commentaires}  
+\begin{itemize}
+  \item On ne stocke que deux variables \texttt{FIB1}, \texttt{FIB2}.
+  \item La condition 
+    \texttt{while [ \$FIB1 -lt \$N ]} garantit de n’afficher que les termes strictement inférieurs à $N$, 
+    et stoppe avant le premier terme $\ge N$.
+  \item Validation minimale : un argument non numérique déclenchera une erreur de shell non gérée.
+\end{itemize}
+
+\medskip
+\noindent\emph{Le code complet est disponible dans l’archive (\texttt{scripts/cow\_college.sh}).}
+
+\newpage
+
+\subsection{cow\_university}
+
+\paragraph{Fonctionnalité}  
+Ce script énonce tous les nombres premiers strictement inférieurs à $n$ :
+\begin{itemize}
+  \item Vérification de la présence d’un argument unique et de sa positivité (\texttt{[ \$1 -le 1 ]}).  
+  \item Boucle \texttt{CMPT=2} à \texttt{CMPT<\$N} :
+    \begin{itemize}
+      \item Initialisation de \texttt{isPrime=1} (on suppose premier).  
+      \item Boucle interne \texttt{while [ \$i -lt \$CMPT ]} testant \texttt{\$CMPT \% \$i}.  
+      \item Si un diviseur est trouvé, \texttt{isPrime=0} et \texttt{break}.  
+      \item Si \texttt{isPrime==1}, appel de \texttt{cowsay \$CMPT}, \texttt{sleep 1}, \texttt{clear}.
+    \end{itemize}
+  \item Fin de l’exercice marquée par \texttt{cowsay -T U "J’ai terminé!"}.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}
+\begin{verbatim}
+$ ./cow_university.sh 20
+ ___
+< 2 >
+ ---
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     || 
+
+3 … 19  
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./cow_university.sh -5
+ ___________________________________
+/ Veuillez fournir un nombre entier \
+\ positif supérieur à 1.            /
+ -----------------------------------
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+\end{verbatim}
+
+\paragraph{Commentaires}  
+\begin{itemize}
+  \item Algorithme naïf de test de primalité en $O(n^2)$, testant tous les diviseurs jusqu’à \texttt{CMPT-1}.  
+  \item Interruption précoce dès qu’un diviseur est trouvé (\texttt{break}) pour limiter les calculs.  
+  \item Validation minimale : un argument non numérique déclenche une erreur de shell non gérée.  
+\end{itemize}
+
+\medskip
+\noindent\emph{Le script complet est disponible dans l’archive (\texttt{scripts/cow\_university.sh}).}
+
+\newpage
+
+\subsection{smart\_cow}
+
+\paragraph{Fonctionnalité}  
+Le script évalue une expression arithmétique simple (addition, soustraction, multiplication, division) passée en argument et affiche le résultat dans les yeux de la vache :
+\begin{itemize}
+  \item Vérification qu’un seul argument (la chaîne d’expression) est fourni.  
+  \item \textbf{Subshell silencieux + redirection} (\texttt{( res=\$((expr)) ) 2>/dev/null}) pour tester la validité de l’expression sans polluer l’écran.  
+  \item Inspection du code de retour (\texttt{\$?}) : si $\ne$  0, message d’erreur \texttt{cowsay "Expression invalide : \$expr"} et sortie.  
+  \item Re-calcul du résultat hors subshell (\texttt{res=\$((expr))}) pour récupérer la valeur.  
+  \item Détermination de la forme des yeux selon la longueur du résultat :  
+    \begin{itemize}
+      \item 1 chiffre → \texttt{eyes="\${res}-"}  
+      \item 2 chiffres → \texttt{eyes="\$res"}  
+      \item >2 chiffres → \texttt{eyes="??"} + message d’excuse.  
+    \end{itemize}
+  \item Affichage final \texttt{cowsay -e "\$eyes" "\$msg"}.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}
+\begin{verbatim}
+$ ./smart_cow.sh "3+11"
+ ___________________________
+< Le résultat de 3+11 est 14 >
+ ---------------------------
+    \   ^__^
+     \  (14)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./smart_cow.sh "3+11+"
+ ________________________________
+< Expression invalide : 3+11+ >
+ --------------------------------
+    \   ^__^
+     \  (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+
+$ ./smart_cow.sh 3 + 11
+Usage: ./smart_cow.sh "<expression>"
+\end{verbatim}
+
+\paragraph{Commentaires et difficultés}  
+\begin{itemize}
+  \item Capturer l’erreur d’arithmétique Bash nécessite un subshell et \texttt{2>/dev/null}, car \texttt{\$((…))} renvoie un code $\ne$ 0 mais affiche aussi un message sur stderr.  
+  \item Refaire le calcul hors subshell est la solution la plus simple pour récupérer \texttt{\$res}.  
+  \item Pas de test explicite sur les caractères de l’expression : si on entre une chaîne non arithmétique, elle est évaluée à 0 sans message d’erreur.  
+  \item Gestion des cas « yeux trop petits » et format dynamique des yeux selon la longueur du résultat.  
+\end{itemize}
+
+\medskip
+\noindent\emph{Le script complet est disponible dans l’archive (\texttt{scripts/smart\_cow.sh}).}
+
+\newpage
+
+\subsection{crazy\_cow}
+
+\paragraph{Fonctionnalité}  
+Ce script applique une suite d’opérations arithmétiques successives, de gauche à droite, à partir d’un nombre initial. Il affiche à chaque étape une vache avec le résultat intermédiaire dans les yeux et change son comportement si un seuil est dépassé.
+
+\begin{itemize}
+  \item Le script attend un argument initial suivi d’un ou plusieurs couples \texttt{<opérateur> <valeur>}.
+  \item Il utilise \texttt{shift} pour traiter dynamiquement les arguments deux par deux.  
+  \item À chaque itération :
+  \begin{itemize}
+    \item vérification de l'opérateur (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{\%}) ;
+    \item vérification que la valeur est bien un entier ;
+    \item tentative de calcul (\texttt{result \$op val}) avec gestion d’erreur comme dans \texttt{smart\_cow}.
+  \end{itemize}
+  \item En cas de dépassement du seuil (\texttt{THRESHOLD=100}), la vache devient folle :
+  \begin{itemize}
+    \item affichage d’un message de délire (\texttt{eyes = ??}, \texttt{@@}, etc.), 
+    \item puis mort finale avec l’option \texttt{-d}.
+  \end{itemize}
+  \item Si le résultat est :
+  \begin{itemize}
+    \item négatif → yeux \texttt{XX},
+    \item nul → yeux \texttt{??},
+    \item normal → yeux \texttt{oo}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Exemple d’exécution}  
+\begin{verbatim}
+$ ./crazy_cow.sh 5 + 2 - 100 + 3 \* 10
+...
+< Résultat après -93 + 3 : -90 >
+        \   ^__^
+         \  (XX)\_______
+
+$ ./crazy_cow.sh 50 + 40 + 30
+...
+< Aaaaarg, c'en est trop ! Je meurs... >
+        \   ^__^
+         \  (xx)\_______
+
+
+$ ./crazy_cow.sh 5 + 2 - 100 = + 3 "*" 10 
+...
+< Opérateur invalide : = >
+        \   ^__^
+         \  (OO)\_______
+
+$ ./crazy_cow.sh 5 + 2 - 100 + + 3 "*" 10 
+< Oups, impossible de calculer : -93 + + >
+        \   ^__^
+         \  (oo)\_______
+\end{verbatim}
+
+\paragraph{Commentaires et difficultés}
+\begin{itemize}
+  \item Cette version visait à proposer un script plus original, avec un traitement dynamique des arguments via \texttt{shift} dans une boucle.
+  \item Nécessité d’échapper l’astérisque \texttt{*} en ligne de commande (\texttt{\textbackslash*} ou \texttt{"*"}), car sinon le shell tente de l’expanser (globbing) en cherchant les fichiers du répertoire courant.
+  \item Vérification élémentaire des erreurs d’entrée via un sous-shell et redirection \texttt{2>/dev/null} pour ne pas afficher les messages Bash.
+\end{itemize}
+
+\medskip
+\noindent\emph{Le script complet est fourni dans l’archive (\texttt{scripts/crazy\_cow.sh}).}
+
 \end{document}
