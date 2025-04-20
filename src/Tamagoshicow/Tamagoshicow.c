@@ -94,6 +94,7 @@ int lire_lunchfood(int stock) {
 }
 
 int fitness2state(fitness){
+    //associe a fitness l'etat de la vache associe
     switch (fitness){
         case 0 : return BYEBYELIFE;
         case 10 : return BYEBYELIFE;
