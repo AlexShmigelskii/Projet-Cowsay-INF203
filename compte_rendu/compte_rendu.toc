@@ -31,7 +31,7 @@
 \contentsline {paragraph}{Exemple d’exécution}{10}{paragraph*.20}%
 \contentsline {paragraph}{Commentaires et difficultés}{10}{paragraph*.21}%
 \contentsline {section}{\numberline {4}C}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}newcow — paramètres personnalisables}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}newcow}{11}{subsection.4.1}%
 \contentsline {paragraph}{Fonctionnalité}{11}{paragraph*.22}%
 \contentsline {paragraph}{Exemples d’exécution}{11}{paragraph*.23}%
 \contentsline {paragraph}{Commentaires}{11}{paragraph*.24}%
@@ -41,7 +41,7 @@
 \contentsline {paragraph}{Fonctions techniques importantes}{12}{paragraph*.27}%
 \contentsline {paragraph}{Originalité}{12}{paragraph*.28}%
 \contentsline {paragraph}{Note sur les performances}{12}{paragraph*.29}%
-\contentsline {subsection}{\numberline {4.3}newcow}{13}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}reading\_cow}{13}{subsection.4.3}%
 \contentsline {paragraph}{Fonctionnalité}{13}{paragraph*.30}%
 \contentsline {paragraph}{Structure du code}{13}{paragraph*.31}%
 \contentsline {paragraph}{Taille des buffers}{13}{paragraph*.32}%
