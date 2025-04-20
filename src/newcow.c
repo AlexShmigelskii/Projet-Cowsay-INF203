@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
     // Valeurs par défaut
     char eyes[3] = "oo";      // yeux par défaut (2 caractères)
     char tongue[3] = "";      // langue vide par défaut (affiche la ligne par défaut)
-    int tail_length = 0;      // queue par défaut sans allongement
+    int tail_length = 1;      // queue par défaut sans allongement
     int legs_length = 0;      // jambes par défaut (1 ligne seulement)
 
     // Analyse des arguments
@@ -99,7 +99,6 @@ int main(int argc, char *argv[]) {
                 return 1;
             }
         }
-        // D'autres options pourraient être traitées ici.
     }
     
     // Appel de la fonction affiche_vache avec les paramètres personnalisés

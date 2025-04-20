@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2025.1.26)  20 APR 2025 14:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2025.1.26)  20 APR 2025 18:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -379,27 +379,32 @@ Overfull \hbox (0.21042pt too wide) in paragraph at lines 466--467
 []\T1/cmr/m/n/10.95 Le script at-tend un ar-gu-ment ini-tial suivi d'un ou plu-sieurs couples \T1/cmtt/m/n/10.95 <opérateur> <valeur>\T1/cmr/m/n/10.95 . 
  []
 
-[10] (./compte_rendu.aux)
+[10] [11]
+Overfull \hbox (48.49922pt too wide) in paragraph at lines 602--603
+[]\T1/cmr/m/n/10.95 La vache est af-fi-chée ligne par ligne grâce à des fonc-tions \T1/cmtt/m/n/10.95 affiche_vache()\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 affiche_vache_mirror()
+ []
+
+[12] [13] (./compte_rendu.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `compte_rendu.out' has not changed.
-(rerunfilecheck)             Checksum: 3F22368AAF7CED21218957B09E615958;1148.
+(rerunfilecheck)             Checksum: 81483B285B6DA127C0618E13CF707D1E;1631.
  ) 
 Here is how much of TeX's memory you used:
- 12925 strings out of 474116
- 203710 string characters out of 5732613
- 1940187 words of memory out of 5000000
- 35107 multiletter control sequences out of 15000+600000
+ 12955 strings out of 474116
+ 204096 string characters out of 5732613
+ 1941187 words of memory out of 5000000
+ 35113 multiletter control sequences out of 15000+600000
  570109 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,387b,458s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,424b,458s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on compte_rendu.pdf (10 pages, 280692 bytes).
+Output written on compte_rendu.pdf (13 pages, 295578 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

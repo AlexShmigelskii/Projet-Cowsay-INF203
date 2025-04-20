@@ -521,4 +521,174 @@ $ ./crazy_cow.sh 5 + 2 - 100 + + 3 "*" 10
 \medskip
 \noindent\emph{Le script complet est fourni dans l’archive (\texttt{scripts/crazy\_cow.sh}).}
 
+\newpage
+
+\section{C}
+
+\subsection{newcow — paramètres personnalisables}
+
+\paragraph{Fonctionnalité}  
+Cette version du programme \texttt{newcow.c} permet à l'utilisateur d'adapter dynamiquement l'apparence de la vache ASCII grâce à plusieurs options :
+\begin{itemize}
+  \item \texttt{-e} ou \texttt{--eyes} : personnalise les yeux (exactement 2 caractères attendus),
+  \item \texttt{-T} ou \texttt{--tongue} : personnalise la langue (1 ou 2 caractères autorisés),
+  \item \texttt{--tail <n>} : ajoute \texttt{n} répétitions du motif \verb|\ /| pour allonger la queue,
+  \item \texttt{--legs <n>} : ajoute \texttt{n} lignes aux jambes verticales.
+\end{itemize}
+
+\paragraph{Exemples d’exécution}
+
+\begin{verbatim}
+$ ./newcow
+      \    ^__^
+       \   (oo)\_______
+           (__)\       )\/
+               ||----w |
+               ||     ||
+
+$ ./newcow -e "Oo" -T "u" --tail 4 --legs 3
+      \    ^__^
+       \   (Oo)\_______
+           (__)\       )\/\/\/\/
+            u  ||----w |
+               ||     ||
+               ||     ||
+               ||     ||
+               ||     ||
+\end{verbatim}
+
+\paragraph{Commentaires}
+\begin{itemize}
+  \item L’apparence de la vache est construite ligne par ligne à l’aide de \texttt{printf()} — chaque ligne du dessin est imprimée manuellement, ce qui permet une insertion dynamique de variables (yeux, langue, etc.).
+
+  \item L’analyse des options repose sur des fonctions standards de \texttt{<string.h>} :
+  \begin{itemize}
+    \item \texttt{strcmp(const char *s1, const char *s2)} : compare deux chaînes. Utilisée ici pour vérifier si un argument correspond à une option (ex: \texttt{-e}, \texttt{--tail}, etc.).
+    \item \texttt{strlen(const char *s)} : retourne la longueur d'une chaîne (hors \texttt{\textbackslash 0}). Cela permet de valider que les options \texttt{-e} contiennent bien exactement 2 caractères et que \texttt{-T} ne dépasse pas 2.
+    \item \texttt{strcpy(char *dest, const char *src)} : copie le contenu de la chaîne \texttt{src} dans \texttt{dest}. Utilisée pour copier la valeur saisie pour les yeux ou la langue dans les variables locales \texttt{eyes} et \texttt{tongue}.
+  \end{itemize}
+
+  \item \texttt{atoi(const char *str)} (issue de \texttt{<stdlib.h>}) : convertit une chaîne représentant un nombre entier (ex: "3") en une valeur \texttt{int}. Cela est nécessaire pour transformer les arguments de \texttt{--tail} et \texttt{--legs} en entiers utilisables dans des boucles.
+
+  \item Le paramètre \texttt{--tail} ajoute une séquence répétée \verb|\ /| simulant une queue plus longue. Cette répétition est obtenue via une boucle \texttt{for} dynamique.
+
+  \item Le paramètre \texttt{--legs} augmente la hauteur du dessin par ajout de lignes supplémentaires verticales sous le corps.
+\end{itemize}
+
+\medskip
+\noindent Pour exécuter, il suffit de compiler le programme (\texttt{gcc newcow.c -o newcow}) puis de le lancer dans un terminal avec : \texttt{./newcow}
+
+\medskip
+\noindent\emph{Le script complet est fourni dans l’archive (\texttt{src/newcow.c}).}
+
+\newpage
+
+\subsection{wildcow}
+
+\paragraph{Fonctionnalité}
+
+Ce programme écrit en \texttt{C} simule une vache « animée » qui :
+\begin{enumerate}
+\item Cligne des yeux plusieurs fois tout en regardant vers la gauche.
+\item Se retourne, puis avance progressivement vers la droite.
+\item Broute de l’herbe en baissant la tête.
+\item Se redresse, cligne à nouveau, et reste immobile.
+\end{enumerate}
+
+L’ensemble est affiché directement dans le terminal à l’aide de commandes ANSI, sans dépendance externe.
+
+\paragraph{Comportement détaillé}
+\begin{itemize}
+\item La vache est affichée ligne par ligne grâce à des fonctions \texttt{affiche\_vache()}, \texttt{affiche\_vache\_mirror()} et \texttt{affiche\_vache\_mirror\_graze()}.
+\item Lors de l’animation, deux « états » des yeux sont utilisés (\texttt{“oo”} pour ouverts et \texttt{”–”} pour fermés), avec alternance visuelle.
+\item L’animation de la marche utilise un indicateur \texttt{leg\_frame} pour modifier les jambes toutes les itérations.
+\item Lorsqu’elle broute, la vache abaisse sa tête et une vague d’animation simule un mouvement de la queue grâce à un tableau de chaînes pré-définies.
+\end{itemize}
+
+\paragraph{Fonctions techniques importantes}
+\begin{itemize}
+\item \texttt{void update()} : efface l’écran et replace le curseur en haut à gauche (\verb|\033[H\033[J|) pour simuler une animation image par image.
+\item \texttt{void gotoxy(int x, int y)} : positionne le curseur à la ligne \texttt{x}, colonne \texttt{y} à l’aide des séquences ANSI (American National Standards Institute) (\verb|\033[%d;%dH|).
+\item \texttt{fflush(stdout)} : force l’affichage immédiat du contenu du buffer standard (stdout). Sans cela, les \texttt{printf()} peuvent être retardés ou ignorés par le système tant que la ligne n’est pas « pleine ». C’est indispensable dans le cadre d’une animation.
+\item \texttt{usleep()} : utilisé à la place de \texttt{sleep()} pour permettre des pauses en fractions de seconde. Cela rend l’animation fluide et plus réactive. \texttt{sleep()} ne prend en charge que des durées entières en secondes.
+\end{itemize}
+
+\paragraph{Originalité}
+
+\begin{itemize}
+\item Le déplacement est réalisé par incrémentation de la colonne d’affichage.
+\item La queue de la vache est animée avec une « onde » grâce à un tableau de motifs ASCII cycliques.
+\item Les mouvements sont construits en simulant un nombre d’étapes précises, permettant un contrôle fin de la scène (ex. : position \texttt{last\_col} mémorisée pour la phase de broutage).
+\end{itemize}
+
+\paragraph{Note sur les performances}
+
+L’utilisation de \textbf{const char *} pour les chaînes fixes (yeux, queue) évite des copies mémoire et signale explicitement au compilateur que les pointeurs ne doivent pas être modifiés. Cela améliore la lisibilité et protège de certaines erreurs de manipulation mémoire.
+
+\medskip
+\noindent Pour exécuter l’animation, il suffit de compiler le programme (\texttt{gcc wildcow.c -o wildcow}) puis de le lancer dans un terminal avec : \texttt{./wildcow}
+\medskip
+\\\noindent\emph{Le script complet est fourni dans l’archive (\texttt{src/wildcow.c}).}
+
+\newpage
+
+\subsection{newcow}
+
+\paragraph{Fonctionnalité}
+Ce programme simule une vache qui « apprend à lire », caractère par caractère. Chaque nouveau caractère apparaît d’abord dans sa bouche, puis est ajouté dans la bulle de texte. Deux modes sont possibles :
+\begin{itemize}
+\item Si un fichier est donné en argument, le texte est lu depuis ce fichier.
+\item Sinon, une phrase est saisie par l’utilisateur dans le terminal (lecture depuis \texttt{stdin}).
+\end{itemize}
+
+\paragraph{Structure du code}
+\begin{itemize}
+\item \texttt{update()} : efface le terminal (séquence ANSI \verb|\033[H\033[J|).
+\item \texttt{print\_bubble()} : dessine dynamiquement la bulle de texte autour des caractères déjà lus.
+\item \texttt{print\_cow()} : affiche la vache avec le caractère en train d’être lu dans la bouche.
+\item \texttt{animate()} : cœur du programme qui anime la lecture à l’aide d’une boucle.
+\end{itemize}
+
+\paragraph{Taille des buffers}
+\begin{itemize}
+\item On utilise deux tableaux statiques : \texttt{char src[1024]} et \texttt{char buffer[1024]}.
+\item La taille maximale est contrôlée par \texttt{total < (int)sizeof(src)} pour éviter tout débordement.
+\item Ce choix simple évite l’usage de la mémoire dynamique tout en permettant des textes relativement longs.
+\end{itemize}
+
+\paragraph{Exemple d’exécution}
+\begin{itemize}
+\item Depuis un fichier texte :
+\begin{verbatim}
+$ ./reading_cow fich.cow
+ -------
+< bonjo >
+ -------
+
+     \   ^__^
+      \  (oo)\_______
+         (__)\       )\/\
+          u ||----w |
+            ||     ||
+\end{verbatim}
+
+\item Depuis une saisie manuelle (entrée standard) :
+\begin{verbatim}
+$ ./reading_cow
+Tapez la chaîne de caractères: Bonjour!
+...
+\end{verbatim}
+\end{itemize}
+
+\paragraph{Commentaires et difficultés}
+\begin{itemize}
+\item La lecture d’un fichier permet de traiter des chaînes contenant des retours à la ligne (\texttt{\textbackslash n}), mais ceux-ci apparaissent « bizarrement » dans l’animation.
+\item À l’inverse, la lecture depuis \texttt{stdin} est limitée à une seule ligne (lecture jusqu’à \texttt{\textbackslash n}).
+\item La fonction \texttt{fflush(stdout)} garantit que le dessin est bien affiché à chaque étape, sans attendre que le buffer soit rempli.
+\item Enfin, \texttt{sleep(1)} donne le rythme d’animation, mais aurait pu être remplacé par \texttt{usleep()} pour plus de fluidité si on voulait aller plus loin.
+\end{itemize}
+
+\medskip
+\noindent\emph{Le fichier source est fourni dans l’archive (\texttt{src/reading\_cow.c}), ainsi qu’un exemple de fichier texte \texttt{fich.cow} pour le test.}
+
 \end{document}
